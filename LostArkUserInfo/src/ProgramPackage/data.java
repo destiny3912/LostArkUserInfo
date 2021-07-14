@@ -10,7 +10,7 @@ import org.jsoup.select.Elements;
 public class data {
 	
 	public String charaterName;
-	public String basic, battle, engrave, tendency;
+	public String basic, battle, engrave, tendency, cardTxt;
 	public String itemLevel, battleLevel, expeditionLevel;
 	
 	public void setName(String name)
@@ -27,7 +27,8 @@ public class data {
 		Elements baiscAbility = doc.select("div.profile-ability-basic").select("span");
 		Elements battleAblity = doc.select("div.profile-ability-battle").select("span");
 		Elements engraveAblity = doc.select("div.profile-ability-engrave").select("span");
-		Elements tendencyAblity = doc.select("div.states_box");
+		Elements tendencyAblity = doc.select("div.profile-ability-tendency.chart-states-wrap.states_box");
+		Elements cardText = doc.select("div.profile-card__text");
 		
 		System.out.println(tendencyAblity);
 		itemLevel = itemL.text();
@@ -37,7 +38,7 @@ public class data {
 		battle = battleAblity.text();
 		engrave = engraveAblity.text();
 		tendency = tendencyAblity.text();
-		
+		cardTxt = cardText.text();
 	}
 	
 	public void setGUI()
@@ -67,6 +68,7 @@ public class data {
 		JLabel battleAblity = new JLabel(battle);
 		JLabel engraveAblity = new JLabel(engrave);
 		JLabel tendencyAblity = new JLabel(tendency);
+		JLabel cardText = new JLabel(cardTxt);
 		
 		iLevel.setHorizontalAlignment(JLabel.LEFT);
 		basicAbility.setHorizontalAlignment(JLabel.LEFT);
@@ -77,6 +79,7 @@ public class data {
 		dataPanel.add(battleAblity);
 		dataPanel.add(engraveAblity);
 		dataPanel.add(tendencyAblity);
+		dataPanel.add(cardText);
 	}
 	
 	public static void main(String[] args) {

@@ -13,7 +13,7 @@ public class Main extends JFrame{
 	public void setGUI()
 	{
 		MainFrame.setVisible(true);
-		MainFrame.setSize(900, 300);
+		MainFrame.setSize(900, 400);
 		MainFrame.setTitle("LostArk Charater info.");
 		MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		MainFrame.setLayout(new GridLayout(2,1));
