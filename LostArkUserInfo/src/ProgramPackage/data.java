@@ -6,12 +6,20 @@ import java.awt.event.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import java.sql.*;
 
 public class data {
 	
 	public String charaterName;
 	public String basic, battle, engrave, tendency, cardTxt;
 	public String itemLevel, battleLevel, expeditionLevel;
+	
+	private final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+	private final String DB_URL = "jdbc:mysql://root@localhost/LArkInfo?&useSSL=false";
+	
+	private final String USER_NAME = "root";
+	private final String PASSWORD = "Destiny3910!";
+	
 	
 	public void setName(String name)
 	{
@@ -39,6 +47,51 @@ public class data {
 		engrave = engraveAblity.text();
 		tendency = tendencyAblity.text();
 		cardTxt = cardText.text();
+		
+		storeInDB();
+	}
+	
+	public void storeInDB()
+	{
+		Connection connectionCheck = null;
+		Statement stateCheck = null;
+		
+		try {
+			
+			Class.forName(JDBC_DRIVER);
+			connectionCheck = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
+			
+			String sqlStatement;
+			sqlStatement = "INSERT INTO userData (user_name, item_level, battle_level, expedition_level, basic_ablity, battle_ablity, engrave_ablity, tendency_ablity, card_text)"
+					+ " VALUE ('" + charaterName +"', '" + itemLevel +"', '" + battleLevel + "', '" + expeditionLevel + "', '" + basic + "', '" + battle + "', '" + engrave + "', '" + tendency
+					+ "N/A', '" + cardTxt + "')";
+			System.out.println(sqlStatement);
+			
+			stateCheck = connectionCheck.createStatement();
+			
+			stateCheck.executeQuery(sqlStatement);
+			
+			
+		}catch(ClassNotFoundException e) {
+			System.out.println("class ERROR");
+		}catch(SQLException e){
+			System.out.println("connection ERROR");
+		}
+		finally {
+			try {
+				if(stateCheck != null)
+					stateCheck.close();
+			}catch(SQLException ex1) {
+				System.out.println("statement ERROR");
+			}
+			
+			try {
+				if(connectionCheck != null)
+					connectionCheck.close();
+			}catch(SQLException ex1) {
+				System.out.println("connection ERROR");
+			}
+		}
 	}
 	
 	public void setGUI()

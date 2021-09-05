@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="/home/oem/WebCrow/jsoup-1.11.3.jar"/>
 	<classpathentry kind="lib" path="/home/oem/WebCrow/jsoup-1.11.3-javadoc.jar"/>
 	<classpathentry kind="lib" path="/home/oem/WebCrow/jsoup-1.11.3-sources.jar"/>
+	<classpathentry kind="lib" path="/home/oem/WebCrow/mysql-connector-java-8.0.26.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
