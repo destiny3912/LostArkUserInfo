@@ -69,7 +69,7 @@ public class data {
 			
 			stateCheck = connectionCheck.createStatement();
 			
-			stateCheck.executeQuery(sqlStatement);
+			stateCheck.execute(sqlStatement);
 			
 			
 		}catch(ClassNotFoundException e) {
