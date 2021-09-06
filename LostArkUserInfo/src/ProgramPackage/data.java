@@ -15,12 +15,11 @@ public class data {
 	public String itemLevel, battleLevel, expeditionLevel;
 	
 	private final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-	private final String DB_URL = "jdbc:mysql://root@localhost/LArkInfo?&useSSL=false";
+	private final String DB_URL = "jdbc:mysql://61.105.41.195:3306/LArkInfo?&useSSL=false";
 	
-	private final String USER_NAME = "root";
+	private final String USER_NAME = "destiny3912";
 	private final String PASSWORD = "Destiny3910!";
-	
-	
+
 	public void setName(String name)
 	{
 		charaterName = name;
